@@ -18,6 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import InicioPrincipal.ColorFondo;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author User
@@ -47,6 +49,8 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
                 Logger.getLogger(RegistrarTrabajador.class.getName()).log(Level.SEVERE, null, ex);
             }
         
+        jTextFecha.setText(fecha());
+        
         seleccionarPredio();
         buscarProducto();
         
@@ -75,6 +79,12 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNombres4 = new javax.swing.JLabel();
+        jTextFecha = new javax.swing.JTextField();
+        jLabelNombres3 = new javax.swing.JLabel();
+        MostrarCodigo = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
+        jButtonListo1 = new javax.swing.JButton();
         jTextNombre = new javax.swing.JTextField();
         jComboBoxPredio = new javax.swing.JComboBox<>();
         jLabelNombres2 = new javax.swing.JLabel();
@@ -92,6 +102,51 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNombres4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres4.setText("FECHA ENT:");
+        getContentPane().add(jLabelNombres4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 160, -1));
+
+        jTextFecha.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jTextFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFechaActionPerformed(evt);
+            }
+        });
+        jTextFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFechaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 240, -1));
+
+        jLabelNombres3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres3.setText("SI DESEA ELIMINAR UN TRABAJADOR DE LA LISTA, SELECCIONELO ");
+        getContentPane().add(jLabelNombres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 810, -1));
+
+        MostrarCodigo.setBackground(new java.awt.Color(0, 0, 0));
+        MostrarCodigo.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        MostrarCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        MostrarCodigo.setText("ID:");
+        getContentPane().add(MostrarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 40, 30));
+
+        jLabelId.setBackground(new java.awt.Color(102, 255, 102));
+        jLabelId.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelId.setOpaque(true);
+        getContentPane().add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 100, 30));
+
+        jButtonListo1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jButtonListo1.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonListo1.setText("ELIMINAR");
+        jButtonListo1.setContentAreaFilled(false);
+        jButtonListo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListo1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonListo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 570, 230, 50));
 
         jTextNombre.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +232,11 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
             }
         ));
         TablaDatos.getTableHeader().setReorderingAllowed(false);
+        TablaDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaDatosMouseClicked(evt);
+            }
+        });
         jScrollPaneProducto.setViewportView(TablaDatos);
 
         getContentPane().add(jScrollPaneProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 650, 350));
@@ -187,13 +247,19 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
 
         jLabelFondo.setBackground(new java.awt.Color(ColorFondo.getColor1(), ColorFondo.getColor2(), ColorFondo.getColor3()));
         jLabelFondo.setOpaque(true);
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1310, 650));
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 1310, 650));
 
         jLabelSumas.setText("jLabel1");
         getContentPane().add(jLabelSumas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public static String fecha(){
+       Date fecha = new Date();
+       SimpleDateFormat formatofecha = new SimpleDateFormat("YYYY/MM/dd");
+       return formatofecha.format(fecha);
+    } 
     
     void seleccionarPredio(){
         try {
@@ -208,7 +274,7 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -220,11 +286,12 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
         modelo.addColumn("ID");
         modelo.addColumn("NOMBRE");
         modelo.addColumn("PAGO");
+        modelo.addColumn("FECHA DE ENTRADA");    
         modelo.addColumn("PREDIO");
         
         
         
-        String datos[] = new String [4]; 
+        String datos[] = new String [5]; 
         
         try {
             con = DriverManager.getConnection(url, user, clave);
@@ -237,12 +304,13 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
                 datos[1]= rs.getString(2);
                 datos[2]= rs.getString(3);
                 datos[3]= rs.getString(4);
+                datos[4]= rs.getString(5);
 
                 modelo.addRow(datos);
             }
             TablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -250,7 +318,7 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
     
     void refrescarPagina(){
         
-        String datos[] = new String [4]; 
+        String datos[] = new String [5]; 
         
      try {
             con = DriverManager.getConnection(url, user, clave);
@@ -263,6 +331,7 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
                 datos[1]= rs.getString(2);
                 datos[2]= rs.getString(3);
                 datos[3]= rs.getString(4);
+                datos[4]= rs.getString(5);
                 
                 
                 
@@ -270,7 +339,7 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
             }
             TablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -297,7 +366,7 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
                 con = DriverManager.getConnection(url, user, clave);
                 stmt = con.createStatement();
                 stmt.executeUpdate("INSERT INTO trabajadores VALUES('0','"+jTextNombre.getText()+"' , "
-                        + "'0', '"+jComboBoxPredio.getSelectedItem().toString()+"')");
+                        + "'0', '"+jTextFecha.getText()+"' ,'"+jComboBoxPredio.getSelectedItem().toString()+"')");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "error");
                 Logger.getLogger(RegistrarTrabajador.class.getName()).log(Level.SEVERE, null, ex);
@@ -338,6 +407,53 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
         modelo.setRowCount(0);
         refrescarPagina();
     }//GEN-LAST:event_jComboBoxPredioActionPerformed
+
+    private void jButtonListo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListo1ActionPerformed
+        boolean sw2=false;
+        if(jLabelId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No seleccionó el trabajador");
+            sw2=true;
+        }
+            
+    
+        else if(sw2==false){
+            
+            try {
+                con = DriverManager.getConnection(url, user, clave);
+                stmt = con.createStatement();
+                stmt.executeUpdate("DELETE FROM trabajadores WHERE id = '"+jLabelId.getText()+"'");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "error");
+                Logger.getLogger(RegistrarTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
+            
+            
+            
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el trabajador exitosamente");
+           modelo.setRowCount(0);
+            jTextNombre.setText("");
+            jLabelId.setText("");
+            jLabelSumas.setText("");
+            
+            refrescarPagina();
+        }
+    }//GEN-LAST:event_jButtonListo1ActionPerformed
+
+    private void TablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaDatosMouseClicked
+        int seleccionar = TablaDatos.rowAtPoint(evt.getPoint());
+        jLabelId.setText(String.valueOf(TablaDatos.getValueAt(seleccionar, 0)));
+    }//GEN-LAST:event_TablaDatosMouseClicked
+
+    private void jTextFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFechaActionPerformed
+
+    private void jTextFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFechaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFechaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -390,17 +506,23 @@ public class RegistrarTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MostrarCodigo;
     public javax.swing.JTable TablaDatos;
     public javax.swing.JButton jButtonAtras;
     public javax.swing.JButton jButtonCancelar1;
     private javax.swing.JButton jButtonListo;
+    private javax.swing.JButton jButtonListo1;
     public static javax.swing.JComboBox<String> jComboBoxPredio;
     private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelNombres1;
     private javax.swing.JLabel jLabelNombres2;
+    private javax.swing.JLabel jLabelNombres3;
+    private javax.swing.JLabel jLabelNombres4;
     private javax.swing.JLabel jLabelSumas;
     private javax.swing.JScrollPane jScrollPaneProducto;
+    public javax.swing.JTextField jTextFecha;
     public javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
 }

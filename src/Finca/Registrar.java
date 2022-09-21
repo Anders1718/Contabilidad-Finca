@@ -87,7 +87,7 @@ public class Registrar extends javax.swing.JFrame {
                 columna.setMinWidth(38);
                 columna.setMaxWidth(38);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -110,7 +110,7 @@ public class Registrar extends javax.swing.JFrame {
             columna.setMinWidth(38);
             columna.setMaxWidth(38);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -124,6 +124,7 @@ public class Registrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jButtonListo = new javax.swing.JButton();
         jButtonCancelar1 = new javax.swing.JButton();
         jLabelPrecio3 = new javax.swing.JLabel();
@@ -139,6 +140,9 @@ public class Registrar extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/productos bien.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
 
         jButtonListo.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jButtonListo.setForeground(new java.awt.Color(51, 51, 51));
@@ -357,6 +361,7 @@ public class Registrar extends javax.swing.JFrame {
     public javax.swing.JButton jButtonCancelar1;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonListo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelPrecio3;
     private javax.swing.JLabel jLabelSumas;

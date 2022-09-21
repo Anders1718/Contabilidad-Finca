@@ -15,8 +15,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static jdk.nashorn.internal.parser.DateParser.DAY;
+import static jdk.nashorn.internal.runtime.regexp.joni.constants.TokenType.INTERVAL;
 /**
  *
  * @author User
@@ -40,6 +46,12 @@ public class RegistrarVaca extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegistrarVaca.class.getName()).log(Level.SEVERE, null, ex);
             }
+        
+        jTextFieldNacimiento.setText(fecha());
+        jTextFieldEntrada.setText(fecha());
+        jTextFieldParto.setText(fecha());
+        jTextFieldSecado.setText(fecha());
+        jTextFieldServicio.setText(fecha());
         seleccionarPredio();
             
        
@@ -59,6 +71,14 @@ public class RegistrarVaca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNombres4 = new javax.swing.JLabel();
+        jTextPadre = new javax.swing.JTextField();
+        jLabelNombres3 = new javax.swing.JLabel();
+        jTextMadre = new javax.swing.JTextField();
+        jLabelNombres2 = new javax.swing.JLabel();
+        jTextNombre = new javax.swing.JTextField();
+        jComboBoxRaza = new javax.swing.JComboBox<>();
+        jLabelPrecio6 = new javax.swing.JLabel();
         jLabelNombres1 = new javax.swing.JLabel();
         jLabelPrecio3 = new javax.swing.JLabel();
         jTextFieldEntrada = new javax.swing.JTextField();
@@ -87,15 +107,78 @@ public class RegistrarVaca extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelNombres4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres4.setText("PADRE:");
+        getContentPane().add(jLabelNombres4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 100, -1));
+
+        jTextPadre.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jTextPadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextPadreActionPerformed(evt);
+            }
+        });
+        jTextPadre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPadreKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 300, -1));
+
+        jLabelNombres3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres3.setText("MADRE:");
+        getContentPane().add(jLabelNombres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 100, -1));
+
+        jTextMadre.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jTextMadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextMadreActionPerformed(evt);
+            }
+        });
+        jTextMadre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextMadreKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 300, -1));
+
+        jLabelNombres2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres2.setText("NOMBRE:");
+        getContentPane().add(jLabelNombres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 120, -1));
+
+        jTextNombre.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jTextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNombreActionPerformed(evt);
+            }
+        });
+        jTextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNombreKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, 300, -1));
+
+        jComboBoxRaza.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jComboBoxRaza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOLSTEIN", "JERSEY", "HOLSTEIN ROJO", "JERHOL", "NORMANDO", "GYR", "GYROLANDA", "BRAHMAN", "CEBÚ", "AYRSHIRE", "BON", "PARDO SUIZO", "ANGUS", "SIMMENTAL", "BRANGUS", "BRAHMAN" }));
+        getContentPane().add(jComboBoxRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 280, 40));
+
+        jLabelPrecio6.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelPrecio6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelPrecio6.setText("RAZA:");
+        getContentPane().add(jLabelPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 80, -1));
+
         jLabelNombres1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelNombres1.setForeground(new java.awt.Color(51, 51, 51));
         jLabelNombres1.setText("PREDIO:");
-        getContentPane().add(jLabelNombres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 110, -1));
+        getContentPane().add(jLabelNombres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 110, -1));
 
         jLabelPrecio3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio3.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio3.setText("FECHA ÚLTIMO SECADO:");
-        getContentPane().add(jLabelPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 300, -1));
+        getContentPane().add(jLabelPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 300, -1));
 
         jTextFieldEntrada.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -108,12 +191,12 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextFieldEntradaKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 240, -1));
+        getContentPane().add(jTextFieldEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 410, 240, -1));
 
         jLabelPrecio4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio4.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio4.setText("FECHA DE ENTRADA:");
-        getContentPane().add(jLabelPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 250, -1));
+        getContentPane().add(jLabelPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 250, -1));
 
         jTextFieldSecado.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldSecado.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +209,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextFieldSecadoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldSecado, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 280, -1));
+        getContentPane().add(jTextFieldSecado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 280, -1));
 
         jTextChapeta.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextChapeta.addActionListener(new java.awt.event.ActionListener() {
@@ -139,25 +222,25 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextChapetaKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextChapeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 430, -1));
+        getContentPane().add(jTextChapeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 340, -1));
 
         jComboBoxPredio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        getContentPane().add(jComboBoxPredio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 250, 40));
+        getContentPane().add(jComboBoxPredio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 250, 40));
 
         jLabelNombres.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelNombres.setForeground(new java.awt.Color(51, 51, 51));
         jLabelNombres.setText("CHAPETA:");
-        getContentPane().add(jLabelNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 140, -1));
+        getContentPane().add(jLabelNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 120, -1));
 
         jLabelPrecio1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio1.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio1.setText("PARTOS:");
-        getContentPane().add(jLabelPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 110, -1));
+        getContentPane().add(jLabelPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 110, -1));
 
         jLabelPrecio5.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio5.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio5.setText("FECHA ÚLTIMO SERVICIO:");
-        getContentPane().add(jLabelPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 310, -1));
+        getContentPane().add(jLabelPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 310, -1));
 
         jTextFieldServicio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldServicio.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +253,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextFieldServicioKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 280, -1));
+        getContentPane().add(jTextFieldServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 280, -1));
 
         jTextFieldNacimiento.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldNacimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +266,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextFieldNacimientoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 240, -1));
+        getContentPane().add(jTextFieldNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 240, -1));
 
         jButtonListo.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jButtonListo.setForeground(new java.awt.Color(51, 51, 51));
@@ -214,7 +297,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
         jLabelPrecio2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio2.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio2.setText("FECHA DE NACIMIENTO:");
-        getContentPane().add(jLabelPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 280, -1));
+        getContentPane().add(jLabelPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 280, -1));
 
         jTextFieldCantidadPartos.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldCantidadPartos.setText("0");
@@ -228,7 +311,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextFieldCantidadPartosKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldCantidadPartos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, 280, -1));
+        getContentPane().add(jTextFieldCantidadPartos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, 280, -1));
 
         jButtonAtras1.setBackground(new java.awt.Color(153, 153, 0));
         jButtonAtras1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -261,7 +344,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
         jLabelTelefono.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelTelefono.setForeground(new java.awt.Color(51, 51, 51));
         jLabelTelefono.setText("FECHA ÚLTIMO PARTO:");
-        getContentPane().add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        getContentPane().add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
         jTextFieldParto.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldParto.addActionListener(new java.awt.event.ActionListener() {
@@ -274,11 +357,11 @@ public class RegistrarVaca extends javax.swing.JFrame {
                 jTextFieldPartoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldParto, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 240, -1));
+        getContentPane().add(jTextFieldParto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 240, -1));
 
         jLabelLogo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/icono.png"))); // NOI18N
-        getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 290, -1, -1));
+        getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 250, -1, -1));
 
         jLabelFondo.setBackground(new java.awt.Color(ColorFondo.getColor1(), ColorFondo.getColor2(), ColorFondo.getColor3()));
         jLabelFondo.setOpaque(true);
@@ -286,6 +369,14 @@ public class RegistrarVaca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    public static String fecha(){
+       Date fecha = new Date();
+       SimpleDateFormat formatofecha = new SimpleDateFormat("YYYY/MM/dd");
+       return formatofecha.format(fecha);
+    } 
+    
     
     void seleccionarPredio(){
         try {
@@ -300,7 +391,7 @@ public class RegistrarVaca extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -349,9 +440,6 @@ public class RegistrarVaca extends javax.swing.JFrame {
         }
         
         else{
-            
-            
-        
             try {
                 con = DriverManager.getConnection(url, user, clave);
                 stmt = con.createStatement();
@@ -362,8 +450,13 @@ public class RegistrarVaca extends javax.swing.JFrame {
                                                 + "'"+jTextFieldSecado.getText()+"' ,"
                                                         + "'"+jTextFieldEntrada.getText()+"',"
                                                                 + "'N/A' , "
-                                                                + "'"+jTextFieldServicio.getText()+"' , "
-                                                                        + "'"+jComboBoxPredio.getSelectedItem().toString()+"')");
+                                                                    + "'"+jTextFieldServicio.getText()+"' , "
+                                                                        + "DATE_ADD('"+jTextFieldServicio.getText()+"', INTERVAL 285 DAY) , " 
+                                                                            + "'"+jComboBoxRaza.getSelectedItem().toString()+"' , "
+                                                                                + "'"+jTextNombre.getText()+"' , " 
+                                                                                    + "'"+jTextPadre.getText()+"' , "    
+                                                                                        + "'"+jTextMadre.getText()+"' , "
+                                                                                            + "'"+jComboBoxPredio.getSelectedItem().toString()+"')");
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarVaca.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -465,6 +558,45 @@ public class RegistrarVaca extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldServicioKeyTyped
 
+    private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNombreActionPerformed
+
+    private void jTextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombreKeyTyped
+        char c= evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String cad=(""+c).toUpperCase();
+            c= cad.charAt(0);
+            evt.setKeyChar(c);
+        }
+    }//GEN-LAST:event_jTextNombreKeyTyped
+
+    private void jTextMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMadreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextMadreActionPerformed
+
+    private void jTextMadreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextMadreKeyTyped
+        char c= evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String cad=(""+c).toUpperCase();
+            c= cad.charAt(0);
+            evt.setKeyChar(c);
+        }
+    }//GEN-LAST:event_jTextMadreKeyTyped
+
+    private void jTextPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPadreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextPadreActionPerformed
+
+    private void jTextPadreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPadreKeyTyped
+        char c= evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String cad=(""+c).toUpperCase();
+            c= cad.charAt(0);
+            evt.setKeyChar(c);
+        }
+    }//GEN-LAST:event_jTextPadreKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -521,15 +653,20 @@ public class RegistrarVaca extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonListo;
     public static javax.swing.JComboBox<String> jComboBoxPredio;
+    public static javax.swing.JComboBox<String> jComboBoxRaza;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelNombres;
     private javax.swing.JLabel jLabelNombres1;
+    private javax.swing.JLabel jLabelNombres2;
+    private javax.swing.JLabel jLabelNombres3;
+    private javax.swing.JLabel jLabelNombres4;
     private javax.swing.JLabel jLabelPrecio1;
     private javax.swing.JLabel jLabelPrecio2;
     private javax.swing.JLabel jLabelPrecio3;
     private javax.swing.JLabel jLabelPrecio4;
     private javax.swing.JLabel jLabelPrecio5;
+    private javax.swing.JLabel jLabelPrecio6;
     private javax.swing.JLabel jLabelTelefono;
     public javax.swing.JTextField jTextChapeta;
     private javax.swing.JTextField jTextFieldCantidadPartos;
@@ -538,5 +675,8 @@ public class RegistrarVaca extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldParto;
     private javax.swing.JTextField jTextFieldSecado;
     private javax.swing.JTextField jTextFieldServicio;
+    public javax.swing.JTextField jTextMadre;
+    public javax.swing.JTextField jTextNombre;
+    public javax.swing.JTextField jTextPadre;
     // End of variables declaration//GEN-END:variables
 }

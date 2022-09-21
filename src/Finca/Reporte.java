@@ -48,6 +48,7 @@ public class Reporte extends javax.swing.JFrame {
             }
         jTextFieldFecha1.setText(fecha());
         jTextFieldFecha2.setText(fecha());
+        seleccionarPredio();
         buscarProducto();
         buscarEgreso();
         sumarDatosNeto();
@@ -80,15 +81,16 @@ public class Reporte extends javax.swing.JFrame {
             con = DriverManager.getConnection(url, user, clave);
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM cheque WHERE "
-                    + "fecha BETWEEN '"+jTextFieldFecha1.getText()+"' AND '"+jTextFieldFecha2.getText()+"' ");
+                    + " predio LIKE '"+jComboBoxPredio.getSelectedItem().toString()+"' AND "
+                        + "fecha BETWEEN '"+jTextFieldFecha1.getText()+"' AND '"+jTextFieldFecha2.getText()+"' ");
             while(rs.next()){
                 
                 datos[0]= rs.getString(1);
                 datos[1]= rs.getString(2);
                 datos[2]= rs.getString(3);
-                datos[3]= formatea.format(Float.valueOf(rs.getString(4)));
+                datos[3]= rs.getString(4);
                 datos[4]= rs.getString(5);
-                datos[5]= formatea.format(Float.valueOf(rs.getString(6)));
+                datos[5]= rs.getString(6);
                 
                 
                 
@@ -125,24 +127,29 @@ public class Reporte extends javax.swing.JFrame {
         modelo.addColumn("MONTO");
         modelo.addColumn("FECHA");
         modelo.addColumn("PREDIO");
+        modelo.addColumn("CATEGORÍA");
+        modelo.addColumn("PROVEEDOR");
 
         TablaDatosGastos.setModel(modelo);
 
-        String datos[] = new String [6];
+        String datos[] = new String [8];
          
         try {
             con = DriverManager.getConnection(url, user, clave);
             stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM gastos WHERE fecha "
-                    + "BETWEEN '"+jTextFieldFecha1.getText()+"' AND '"+jTextFieldFecha2.getText()+"'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM gastos WHERE "
+                + " predio LIKE '"+jComboBoxPredio.getSelectedItem().toString()+"' AND "
+                    + " fecha BETWEEN '"+jTextFieldFecha1.getText()+"' AND '"+jTextFieldFecha2.getText()+"'");
             while(rs.next()){
                 
                 datos[0]= rs.getString(1);
                 datos[1]= rs.getString(2);
                 datos[2]= rs.getString(3);
-                datos[3]= formatea.format(Float.valueOf(rs.getString(4)));
+                datos[3]= rs.getString(4);
                 datos[4]= rs.getString(5);
                 datos[5]= rs.getString(6);
+                datos[6]= rs.getString(7);
+                datos[7]= rs.getString(8);
                 modelo.addRow(datos);
                 
             }
@@ -165,7 +172,8 @@ public class Reporte extends javax.swing.JFrame {
         
     }
     
-
+    
+    
 
 
 
@@ -372,16 +380,16 @@ public class Reporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public static String fecha(){
        Date fecha = new Date();
-       SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+       SimpleDateFormat formatofecha = new SimpleDateFormat("YYYY/MM/dd");
        return formatofecha.format(fecha);
     }  
     
     
     void sumarDatosNeto(){
         
-        int cont=0;
-        int contEgreso=0;
-        int contNeto=0;
+        float cont=0;
+        float contEgreso=0;
+        float contNeto=0;
         int filas = TablaDatos.getRowCount();
         int filasGasto = TablaDatosGastos.getRowCount();
         
@@ -389,22 +397,46 @@ public class Reporte extends javax.swing.JFrame {
         
         
         for(int i=0; i<filas; i++){
-            contNeto += Integer.parseInt((String) TablaDatos.getValueAt(i, 5));
+            contNeto += Float.parseFloat((String) TablaDatos.getValueAt(i, 5));
         }
         
         
         
         for(int i=0; i<filasGasto; i++){
-            contEgreso += Integer.parseInt((String) TablaDatosGastos.getValueAt(i, 3));
+            contEgreso += Float.parseFloat((String) TablaDatosGastos.getValueAt(i, 3));
         }
         
-        jLabelGastos.setText(String.valueOf(contEgreso));
+        jLabelBruto.setText(String.valueOf(formatea.format(contNeto)));
+        
+        jLabelGastos.setText(String.valueOf(formatea.format(contEgreso)));
         cont= contNeto - contEgreso;
         
-        jLabelTotal.setText(String.valueOf(cont));
+        jLabelTotal.setText(String.valueOf(formatea.format(cont)));
+        
+        
         
         
       }
+    
+    void seleccionarPredio(){
+        try {
+             
+            con = DriverManager.getConnection(url, user, clave);
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM nombre_finca");
+
+                while(rs.next()){
+                    jComboBoxPredio.addItem(rs.getString(2));
+                }
+        
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
       
       
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
@@ -446,6 +478,7 @@ public class Reporte extends javax.swing.JFrame {
 
     private void jComboBoxPredioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPredioActionPerformed
         buscarProducto();
+        buscarEgreso();
     }//GEN-LAST:event_jComboBoxPredioActionPerformed
 
     private void jTextFieldFecha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFecha2ActionPerformed

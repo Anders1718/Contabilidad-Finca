@@ -10,6 +10,7 @@ import Finca.Conexion;
 import Finca.InicioFinca;
 import Finca.GastosMenu;
 import Finca.FincaMod;
+import Turbo.InicioTurbo;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -44,7 +45,6 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonInventario = new javax.swing.JButton();
-        jButtonModificar = new javax.swing.JButton();
         jButtonClientes = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -67,24 +67,7 @@ public class Inicio extends javax.swing.JFrame {
                 jButtonInventarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 250, 310));
-
-        jButtonModificar.setBackground(new java.awt.Color(0, 0, 0));
-        jButtonModificar.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jButtonModificar.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logos/Tomate.png"))); // NOI18N
-        jButtonModificar.setBorder(null);
-        jButtonModificar.setBorderPainted(false);
-        jButtonModificar.setContentAreaFilled(false);
-        jButtonModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 290, 310));
+        getContentPane().add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 250, 310));
 
         jButtonClientes.setBackground(new java.awt.Color(0, 0, 0));
         jButtonClientes.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -100,7 +83,7 @@ public class Inicio extends javax.swing.JFrame {
                 jButtonClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 180, 290, 310));
+        getContentPane().add(jButtonClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 290, 310));
 
         jLabelFondo.setBackground(new java.awt.Color(ColorFondo.getColor1(), ColorFondo.getColor2(), ColorFondo.getColor3()));
         jLabelFondo.setOpaque(true);
@@ -110,7 +93,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientesActionPerformed
-        Leche R = new Leche();
+        InicioTurbo R = new InicioTurbo();
         R.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonClientesActionPerformed
@@ -120,17 +103,9 @@ public class Inicio extends javax.swing.JFrame {
         M.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonInventarioActionPerformed
-
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        FincaMod M = new FincaMod();
-        M.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButtonModificarActionPerformed
     public void transpareciaBoton(){
 
-        jButtonModificar.setOpaque(false);
-        jButtonModificar.setContentAreaFilled(false);
-        jButtonModificar.setBorderPainted(false);
+        
        jButtonInventario.setOpaque(false);
         jButtonInventario.setContentAreaFilled(false);
         jButtonInventario.setBorderPainted(false);
@@ -176,7 +151,6 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClientes;
     private javax.swing.JButton jButtonInventario;
-    private javax.swing.JButton jButtonModificar;
     private javax.swing.JLabel jLabelFondo;
     // End of variables declaration//GEN-END:variables
 }

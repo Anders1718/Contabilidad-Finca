@@ -12,11 +12,13 @@ package Finca;
 public class Conexion {
 
    
-    static String user = "root";
-    static String clave = "";
-    static String url = "jdbc:mysql://localhost:3306/finca";
+    public static String user = "root";
+    public static String clave = "";
+    public static String url = "jdbc:mysql://localhost:3306/finca";
+    public static String urlTurbo = "jdbc:mysql://localhost:3306/turbo";
     
-    static String nombreNegocio = "Contabilidad Edward";
+    
+    public static String nombreNegocio = "Contabilidad Edward";
     
     static String correo = "outletparatodos@outlook.com";
     static String contrasena = "Outlet2022";

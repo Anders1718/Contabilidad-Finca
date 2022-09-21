@@ -80,6 +80,14 @@ public class Insumo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelId = new javax.swing.JLabel();
+        jTextFieldProveedor = new javax.swing.JTextField();
+        jLabelPrecio6 = new javax.swing.JLabel();
+        jLabelPrecio4 = new javax.swing.JLabel();
+        jTextFieldCategoria = new javax.swing.JTextField();
+        MostrarCodigo = new javax.swing.JLabel();
+        jLabelNombres3 = new javax.swing.JLabel();
+        jButtonEliminar = new javax.swing.JButton();
         jTextFieldDescripcion = new javax.swing.JTextField();
         jTextFieldFecha = new javax.swing.JTextField();
         jTextFieldPrecio = new javax.swing.JTextField();
@@ -102,6 +110,69 @@ public class Insumo extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelId.setBackground(new java.awt.Color(102, 255, 102));
+        jLabelId.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelId.setOpaque(true);
+        getContentPane().add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, 30));
+
+        jTextFieldProveedor.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jTextFieldProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldProveedorActionPerformed(evt);
+            }
+        });
+        jTextFieldProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldProveedorKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextFieldProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 240, -1));
+
+        jLabelPrecio6.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelPrecio6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelPrecio6.setText("PROVEEDOR:");
+        getContentPane().add(jLabelPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 180, -1));
+
+        jLabelPrecio4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelPrecio4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelPrecio4.setText("CATEGORÍA:");
+        getContentPane().add(jLabelPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 160, -1));
+
+        jTextFieldCategoria.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jTextFieldCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCategoriaActionPerformed(evt);
+            }
+        });
+        jTextFieldCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCategoriaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextFieldCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 240, -1));
+
+        MostrarCodigo.setBackground(new java.awt.Color(0, 0, 0));
+        MostrarCodigo.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        MostrarCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        MostrarCodigo.setText("ID:");
+        getContentPane().add(MostrarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 40, 30));
+
+        jLabelNombres3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres3.setText("SI DESEA ELIMINAR UN INSUMO DE LA LISTA, SELECCIONELO ");
+        getContentPane().add(jLabelNombres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 730, -1));
+
+        jButtonEliminar.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jButtonEliminar.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonEliminar.setText("ELIMINAR");
+        jButtonEliminar.setContentAreaFilled(false);
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 230, 50));
+
         jTextFieldDescripcion.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +184,7 @@ public class Insumo extends javax.swing.JFrame {
                 jTextFieldDescripcionKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 280, -1));
+        getContentPane().add(jTextFieldDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 280, -1));
 
         jTextFieldFecha.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +197,7 @@ public class Insumo extends javax.swing.JFrame {
                 jTextFieldFechaKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 240, -1));
+        getContentPane().add(jTextFieldFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 240, -1));
 
         jTextFieldPrecio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldPrecio.setText("0");
@@ -140,17 +211,17 @@ public class Insumo extends javax.swing.JFrame {
                 jTextFieldPrecioKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 280, -1));
+        getContentPane().add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 280, -1));
 
         jLabelPrecio3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio3.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio3.setText("PRECIO:");
-        getContentPane().add(jLabelPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 100, -1));
+        getContentPane().add(jLabelPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 100, -1));
 
         jLabelPrecio2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelPrecio2.setForeground(new java.awt.Color(51, 51, 51));
         jLabelPrecio2.setText("FECHA:");
-        getContentPane().add(jLabelPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 100, -1));
+        getContentPane().add(jLabelPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 100, -1));
 
         jComboBoxPredio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jComboBoxPredio.addActionListener(new java.awt.event.ActionListener() {
@@ -158,12 +229,12 @@ public class Insumo extends javax.swing.JFrame {
                 jComboBoxPredioActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBoxPredio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 250, 40));
+        getContentPane().add(jComboBoxPredio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 250, 40));
 
         jLabelNombres2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelNombres2.setForeground(new java.awt.Color(51, 51, 51));
         jLabelNombres2.setText("PREDIO:");
-        getContentPane().add(jLabelNombres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 110, -1));
+        getContentPane().add(jLabelNombres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 110, -1));
 
         jButtonListo.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jButtonListo.setForeground(new java.awt.Color(51, 51, 51));
@@ -207,7 +278,7 @@ public class Insumo extends javax.swing.JFrame {
         jLabelNombres1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabelNombres1.setForeground(new java.awt.Color(51, 51, 51));
         jLabelNombres1.setText("DESCRIPCIÓN:");
-        getContentPane().add(jLabelNombres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 180, -1));
+        getContentPane().add(jLabelNombres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 180, -1));
 
         TablaDatos = new javax.swing.JTable(){
             public boolean isCellEditable(int riwIndex, int colIndex){
@@ -223,13 +294,18 @@ public class Insumo extends javax.swing.JFrame {
             }
         ));
         TablaDatos.getTableHeader().setReorderingAllowed(false);
+        TablaDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaDatosMouseClicked(evt);
+            }
+        });
         jScrollPaneProducto.setViewportView(TablaDatos);
 
         getContentPane().add(jScrollPaneProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 650, 350));
 
         jLabelLogo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/fertilizer.png"))); // NOI18N
-        getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
+        getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jLabelFondo.setBackground(new java.awt.Color(ColorFondo.getColor1(), ColorFondo.getColor2(), ColorFondo.getColor3()));
         jLabelFondo.setOpaque(true);
@@ -243,7 +319,7 @@ public class Insumo extends javax.swing.JFrame {
     
     public static String fecha(){
        Date fecha = new Date();
-       SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+       SimpleDateFormat formatofecha = new SimpleDateFormat("YYYY/MM/dd");
        return formatofecha.format(fecha);
     } 
     
@@ -260,7 +336,7 @@ public class Insumo extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -277,10 +353,12 @@ public class Insumo extends javax.swing.JFrame {
         modelo.addColumn("PRECIO");
         modelo.addColumn("FECHA");
         modelo.addColumn("PREDIO");
+        modelo.addColumn("CATEGORÍA");
+        modelo.addColumn("PROVEEDOR");
         
         
         
-        String datos[] = new String [6]; 
+        String datos[] = new String [8]; 
         
         try {
             con = DriverManager.getConnection(url, user, clave);
@@ -295,12 +373,14 @@ public class Insumo extends javax.swing.JFrame {
                 datos[3]= formatea.format(Float.valueOf(rs.getString(4)));
                 datos[4]= rs.getString(5);
                 datos[5]= rs.getString(6);
+                datos[6]= rs.getString(7);
+                datos[7]= rs.getString(8);
 
                 modelo.addRow(datos);
             }
             TablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -308,7 +388,7 @@ public class Insumo extends javax.swing.JFrame {
     
     void refrescarPagina(){
         
-        String datos[] = new String [6]; 
+        String datos[] = new String [8]; 
         
      try {
             con = DriverManager.getConnection(url, user, clave);
@@ -323,6 +403,8 @@ public class Insumo extends javax.swing.JFrame {
                 datos[3]= formatea.format(Float.valueOf(rs.getString(4)));
                 datos[4]= rs.getString(5);
                 datos[5]= rs.getString(6);
+                datos[6]= rs.getString(7);
+                datos[7]= rs.getString(8);
                 
                 
                 
@@ -330,7 +412,7 @@ public class Insumo extends javax.swing.JFrame {
             }
             TablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -341,6 +423,12 @@ public class Insumo extends javax.swing.JFrame {
             sw2=true;
         }else if(jTextFieldFecha.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "No ingresó la fecha");
+            sw2=true;
+        }else if(jTextFieldCategoria.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ingresó la categoría");
+            sw2=true;
+        }else if(jTextFieldProveedor.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ingresó el proveedor");
             sw2=true;
         }
             
@@ -353,7 +441,9 @@ public class Insumo extends javax.swing.JFrame {
                 stmt.executeUpdate("INSERT INTO gastos VALUES('0','"+jTextFieldDescripcion.getText()+"' , "
                         + " 'INSUMO' , '"+jTextFieldPrecio.getText()+"' , "
                                 + "'"+jTextFieldFecha.getText()+"' , "
-                                    + "'"+jComboBoxPredio.getSelectedItem().toString()+"')");
+                                    + "'"+jComboBoxPredio.getSelectedItem().toString()+"' ,"
+                                    + "'"+jTextFieldCategoria.getText()+"' ,"
+                                                    + "'"+jTextFieldProveedor.getText()+"')");
                 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "error");
@@ -425,8 +515,71 @@ public class Insumo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDescripcionActionPerformed
 
     private void jTextFieldDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionKeyTyped
-        // TODO add your handling code here:
+        char c= evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String cad=(""+c).toUpperCase();
+            c= cad.charAt(0);
+            evt.setKeyChar(c);
+        }
     }//GEN-LAST:event_jTextFieldDescripcionKeyTyped
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        boolean sw2=false;
+        if(jLabelId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No seleccionó el insumo");
+            sw2=true;
+        }
+
+        else if(sw2==false){
+
+            try {
+                con = DriverManager.getConnection(url, user, clave);
+                stmt = con.createStatement();
+                stmt.executeUpdate("DELETE FROM gastos WHERE id = '"+jLabelId.getText()+"'");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "error");
+                Logger.getLogger(RegistrarTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el insumo exitosamente");
+            modelo.setRowCount(0);
+            jLabelId.setText("");
+            jLabelSumas.setText("");
+
+            refrescarPagina();
+        }
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void TablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaDatosMouseClicked
+        int seleccionar = TablaDatos.rowAtPoint(evt.getPoint());
+        jLabelId.setText(String.valueOf(TablaDatos.getValueAt(seleccionar, 0)));
+    }//GEN-LAST:event_TablaDatosMouseClicked
+
+    private void jTextFieldProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldProveedorActionPerformed
+
+    private void jTextFieldProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProveedorKeyTyped
+        char c= evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String cad=(""+c).toUpperCase();
+            c= cad.charAt(0);
+            evt.setKeyChar(c);
+        }
+    }//GEN-LAST:event_jTextFieldProveedorKeyTyped
+
+    private void jTextFieldCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCategoriaActionPerformed
+
+    private void jTextFieldCategoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCategoriaKeyTyped
+        char c= evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String cad=(""+c).toUpperCase();
+            c= cad.charAt(0);
+            evt.setKeyChar(c);
+        }
+    }//GEN-LAST:event_jTextFieldCategoriaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -527,21 +680,29 @@ public class Insumo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MostrarCodigo;
     public javax.swing.JTable TablaDatos;
     public javax.swing.JButton jButtonAtras;
     public javax.swing.JButton jButtonCancelar1;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonListo;
     public static javax.swing.JComboBox<String> jComboBoxPredio;
     private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelNombres1;
     private javax.swing.JLabel jLabelNombres2;
+    private javax.swing.JLabel jLabelNombres3;
     private javax.swing.JLabel jLabelPrecio2;
     private javax.swing.JLabel jLabelPrecio3;
+    private javax.swing.JLabel jLabelPrecio4;
+    private javax.swing.JLabel jLabelPrecio6;
     private javax.swing.JLabel jLabelSumas;
     private javax.swing.JScrollPane jScrollPaneProducto;
+    public javax.swing.JTextField jTextFieldCategoria;
     private javax.swing.JTextField jTextFieldDescripcion;
     public javax.swing.JTextField jTextFieldFecha;
     private javax.swing.JTextField jTextFieldPrecio;
+    public javax.swing.JTextField jTextFieldProveedor;
     // End of variables declaration//GEN-END:variables
 }

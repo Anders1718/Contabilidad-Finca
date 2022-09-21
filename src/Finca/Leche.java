@@ -96,7 +96,7 @@ public class Leche extends javax.swing.JFrame {
         jButtonClienteModificar.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jButtonClienteModificar.setForeground(new java.awt.Color(51, 51, 51));
         jButtonClienteModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/modificar bien.png"))); // NOI18N
-        jButtonClienteModificar.setText("MODIFICAR");
+        jButtonClienteModificar.setText("MODIFICAR CHEQUE");
         jButtonClienteModificar.setBorderPainted(false);
         jButtonClienteModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonClienteModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -105,7 +105,7 @@ public class Leche extends javax.swing.JFrame {
                 jButtonClienteModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonClienteModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 220, 200, 210));
+        getContentPane().add(jButtonClienteModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 220, 300, 210));
 
         jLabelLogo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/cajon_1.png"))); // NOI18N
@@ -151,7 +151,7 @@ public class Leche extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
     private void jButtonClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteModificarActionPerformed
-        ModificarVaca M = new ModificarVaca();
+        ModificarCheque M = new ModificarCheque();
         M.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonClienteModificarActionPerformed

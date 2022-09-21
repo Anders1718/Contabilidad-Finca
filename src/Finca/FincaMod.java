@@ -153,7 +153,7 @@ public void transpareciaBoton(){
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void jButtonIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngreso1ActionPerformed
-        ModificarProducto M = new ModificarProducto();
+        ModificarNombre M = new ModificarNombre();
         M.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonIngreso1ActionPerformed

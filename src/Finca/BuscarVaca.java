@@ -47,6 +47,7 @@ public class BuscarVaca extends javax.swing.JFrame {
         
         modelo.addColumn("ID");
         modelo.addColumn("CHAPETA");
+        modelo.addColumn("NOMBRE");
         modelo.addColumn("FECHA NAC");
         modelo.addColumn("ULT PARTO");
         modelo.addColumn("CANT PARTO");
@@ -54,6 +55,10 @@ public class BuscarVaca extends javax.swing.JFrame {
         modelo.addColumn("FECHA ENT");
         modelo.addColumn("FECHA SALIDA");
         modelo.addColumn("ULT SERVC");
+        modelo.addColumn("POSIBLE PAR");
+        modelo.addColumn("RAZA");  
+        modelo.addColumn("PADRE");
+        modelo.addColumn("MADRE");
         modelo.addColumn("PREDIO");
         
         TablaDatos.setModel(modelo);
@@ -74,7 +79,7 @@ public class BuscarVaca extends javax.swing.JFrame {
         modelo.setRowCount(0);
         
         
-        String datos[] = new String [10];
+        String datos[] = new String [15];
          
         try {
             con = DriverManager.getConnection(url, user, clave);
@@ -85,14 +90,19 @@ public class BuscarVaca extends javax.swing.JFrame {
             while(rs.next()){
                 datos[0]= rs.getString(1);
                 datos[1]= rs.getString(2);
-                datos[2]= rs.getString(3);
-                datos[3]= rs.getString(4);
-                datos[4]= rs.getString(5);
-                datos[5]= rs.getString(6);
-                datos[6]= rs.getString(7);
-                datos[7]= rs.getString(8);
-                datos[8]= rs.getString(9);
-                datos[9]= rs.getString(10);
+                datos[2]= rs.getString(12);
+                datos[3]= rs.getString(3);
+                datos[4]= rs.getString(4);
+                datos[5]= rs.getString(5);
+                datos[6]= rs.getString(6);
+                datos[7]= rs.getString(7);
+                datos[8]= rs.getString(8);
+                datos[9]= rs.getString(9);
+                datos[10]= rs.getString(10);
+                datos[11]= rs.getString(11);
+                datos[12]= rs.getString(13);
+                datos[13]= rs.getString(14);
+                datos[14]= rs.getString(15);
                 
                 
                 modelo.addRow(datos);
@@ -264,7 +274,7 @@ public class BuscarVaca extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

@@ -281,7 +281,7 @@ public class RegistrarLitros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public static String fecha(){
        Date fecha = new Date();
-       SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+       SimpleDateFormat formatofecha = new SimpleDateFormat("YYYY/MM/dd");
        return formatofecha.format(fecha);
     } 
     
@@ -299,7 +299,7 @@ public class RegistrarLitros extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

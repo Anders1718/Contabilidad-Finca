@@ -8,6 +8,7 @@ import InicioPrincipal.ColorFondo;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -38,6 +39,9 @@ public class Vacas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonBuscar2 = new javax.swing.JButton();
+        jButtonIngreso2 = new javax.swing.JButton();
+        jButtonBuscar1 = new javax.swing.JButton();
         jButtonRegistrar = new javax.swing.JButton();
         jButtonIngreso1 = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
@@ -49,6 +53,55 @@ public class Vacas extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonBuscar2.setBackground(new java.awt.Color(102, 51, 255));
+        jButtonBuscar2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jButtonBuscar2.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/secas.png"))); // NOI18N
+        jButtonBuscar2.setText("VACAS SECAS");
+        jButtonBuscar2.setBorderPainted(false);
+        jButtonBuscar2.setContentAreaFilled(false);
+        jButtonBuscar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonBuscar2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscar2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 360, 210, 210));
+
+        jButtonIngreso2.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonIngreso2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jButtonIngreso2.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonIngreso2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes1/salida.png"))); // NOI18N
+        jButtonIngreso2.setText("SACAR VACA");
+        jButtonIngreso2.setBorder(null);
+        jButtonIngreso2.setBorderPainted(false);
+        jButtonIngreso2.setContentAreaFilled(false);
+        jButtonIngreso2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonIngreso2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonIngreso2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngreso2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonIngreso2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 180, 170));
+
+        jButtonBuscar1.setBackground(new java.awt.Color(102, 51, 255));
+        jButtonBuscar1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jButtonBuscar1.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesTurbo/viajes.png"))); // NOI18N
+        jButtonBuscar1.setText("SALIDAS");
+        jButtonBuscar1.setBorderPainted(false);
+        jButtonBuscar1.setContentAreaFilled(false);
+        jButtonBuscar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonBuscar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 160, 210));
 
         jButtonRegistrar.setBackground(new java.awt.Color(0, 153, 51));
         jButtonRegistrar.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -64,7 +117,7 @@ public class Vacas extends javax.swing.JFrame {
                 jButtonRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 240));
+        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, 240));
 
         jButtonIngreso1.setBackground(new java.awt.Color(255, 153, 51));
         jButtonIngreso1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -96,7 +149,7 @@ public class Vacas extends javax.swing.JFrame {
                 jButtonBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 210, 260, 210));
+        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 260, 210));
 
         jButtonAtras.setBackground(new java.awt.Color(153, 153, 0));
         jButtonAtras.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -158,6 +211,25 @@ public void transpareciaBoton(){
         dispose();
     }//GEN-LAST:event_jButtonIngreso1ActionPerformed
 
+    private void jButtonBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscar1ActionPerformed
+        SalidaVacas S = new SalidaVacas();
+        S.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonBuscar1ActionPerformed
+
+    private void jButtonIngreso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngreso2ActionPerformed
+        SacarVaca V = new SacarVaca();
+        V.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonIngreso2ActionPerformed
+
+    private void jButtonBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscar2ActionPerformed
+        /*VacasSecas c = new VacasSecas();
+        c.setVisible(true);
+        dispose();*/
+        JOptionPane.showMessageDialog(null, "Función próximamente");
+    }//GEN-LAST:event_jButtonBuscar2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,7 +275,10 @@ public void transpareciaBoton(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonBuscar1;
+    private javax.swing.JButton jButtonBuscar2;
     private javax.swing.JButton jButtonIngreso1;
+    private javax.swing.JButton jButtonIngreso2;
     private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;

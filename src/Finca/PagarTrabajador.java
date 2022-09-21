@@ -80,6 +80,10 @@ public class PagarTrabajador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNombres3 = new javax.swing.JLabel();
+        MostrarCodigo = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
+        jButtonEliminar = new javax.swing.JButton();
         jTextFieldFecha = new javax.swing.JTextField();
         jTextFieldPrecio = new javax.swing.JTextField();
         jLabelPrecio3 = new javax.swing.JLabel();
@@ -101,6 +105,33 @@ public class PagarTrabajador extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNombres3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelNombres3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelNombres3.setText("SI DESEA ELIMINAR UN PAGO DE LA LISTA, SELECCIONELO ");
+        getContentPane().add(jLabelNombres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 710, -1));
+
+        MostrarCodigo.setBackground(new java.awt.Color(0, 0, 0));
+        MostrarCodigo.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        MostrarCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        MostrarCodigo.setText("ID:");
+        getContentPane().add(MostrarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 40, 30));
+
+        jLabelId.setBackground(new java.awt.Color(102, 255, 102));
+        jLabelId.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabelId.setOpaque(true);
+        getContentPane().add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, 30));
+
+        jButtonEliminar.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jButtonEliminar.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonEliminar.setText("ELIMINAR");
+        jButtonEliminar.setContentAreaFilled(false);
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 230, 50));
 
         jTextFieldFecha.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +249,11 @@ public class PagarTrabajador extends javax.swing.JFrame {
             }
         ));
         TablaDatos.getTableHeader().setReorderingAllowed(false);
+        TablaDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaDatosMouseClicked(evt);
+            }
+        });
         jScrollPaneProducto.setViewportView(TablaDatos);
 
         getContentPane().add(jScrollPaneProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 650, 350));
@@ -238,7 +274,7 @@ public class PagarTrabajador extends javax.swing.JFrame {
     
     public static String fecha(){
        Date fecha = new Date();
-       SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+       SimpleDateFormat formatofecha = new SimpleDateFormat("YYYY/MM/dd");
        return formatofecha.format(fecha);
     } 
     
@@ -255,7 +291,7 @@ public class PagarTrabajador extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -276,7 +312,7 @@ public class PagarTrabajador extends javax.swing.JFrame {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(Predios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -312,7 +348,7 @@ public class PagarTrabajador extends javax.swing.JFrame {
             }
             TablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -340,7 +376,7 @@ public class PagarTrabajador extends javax.swing.JFrame {
             }
             TablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -363,7 +399,7 @@ public class PagarTrabajador extends javax.swing.JFrame {
                 stmt.executeUpdate("INSERT INTO gastos VALUES('0','"+jComboBoxNombre.getSelectedItem().toString()+"' , "
                         + " 'TRABAJADOR' , '"+jTextFieldPrecio.getText()+"' , "
                                 + "'"+jTextFieldFecha.getText()+"' , "
-                                    + "'"+jComboBoxPredio.getSelectedItem().toString()+"')");
+                                    + "'"+jComboBoxPredio.getSelectedItem().toString()+"', 'N/A', 'N/A')");
                 //stmt.executeUpdate("UPDATE trabajadores SET pago = '"+jTextFieldPrecio.getText()+"' WHERE id = '"
                   //      +jLabelId.getText()+"'");
             } catch (SQLException ex) {
@@ -435,6 +471,39 @@ public class PagarTrabajador extends javax.swing.JFrame {
         if(b==0){evt.consume();  getToolkit().beep(); }
     }//GEN-LAST:event_jTextFieldPrecioKeyTyped
 
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        boolean sw2=false;
+        if(jLabelId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No seleccionó el pago");
+            sw2=true;
+        }
+
+        else if(sw2==false){
+
+            try {
+                con = DriverManager.getConnection(url, user, clave);
+                stmt = con.createStatement();
+                stmt.executeUpdate("DELETE FROM gastos WHERE id = '"+jLabelId.getText()+"'");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "error");
+                Logger.getLogger(RegistrarTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el pago exitosamente");
+            modelo.setRowCount(0);
+            
+            jLabelId.setText("");
+            jLabelSumas.setText("");
+
+            refrescarPagina();
+        }
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void TablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaDatosMouseClicked
+        int seleccionar = TablaDatos.rowAtPoint(evt.getPoint());
+        jLabelId.setText(String.valueOf(TablaDatos.getValueAt(seleccionar, 0)));
+    }//GEN-LAST:event_TablaDatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -502,16 +571,20 @@ public class PagarTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MostrarCodigo;
     public javax.swing.JTable TablaDatos;
     public javax.swing.JButton jButtonAtras;
     public javax.swing.JButton jButtonCancelar1;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonListo;
     public static javax.swing.JComboBox<String> jComboBoxNombre;
     public static javax.swing.JComboBox<String> jComboBoxPredio;
     private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelNombres1;
     private javax.swing.JLabel jLabelNombres2;
+    private javax.swing.JLabel jLabelNombres3;
     private javax.swing.JLabel jLabelPrecio2;
     private javax.swing.JLabel jLabelPrecio3;
     private javax.swing.JLabel jLabelSumas;
